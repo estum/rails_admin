@@ -68,7 +68,13 @@ module RailsAdmin
     end
 
     def help_for field
-      field.help.present? ? @template.content_tag(:p, field.help, :class => 'help-block') : ''.html_safe
+      if field.help.present?
+        icon_question = @template.content_tag :i, '', :class => %w(icon-question-sign)
+        tooltip = @template.link_to icon_question, "#", :title => field.help, :data => { :toggle => "tooltip", :html => true }
+        @template.content_tag :span, tooltip.html_safe, :class => 'help-inline'
+      else
+        ''.html_safe
+      end
     end
 
     def field_for field
