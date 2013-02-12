@@ -64,3 +64,4 @@ $(document).on 'rails_admin.dom_ready', ->
     $(this).siblings('.control-group').hide()
 
   $(".table").tooltip selector: "th[rel=tooltip]"
+  $('a[data-toggle="tooltip"]').tooltip()
